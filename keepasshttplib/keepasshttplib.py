@@ -1,9 +1,7 @@
 import keyring
-from keepasshttplib import encrypter
-from keepasshttplib import httpclient
+from . import encrypter
+from . import httpclient
 import base64
-
-# >>> keyring.get_password("system", "username")
 
 class Keepasshttplib():
     """Encrypting and decrypting strings using AES"""
@@ -32,6 +30,7 @@ class Keepasshttplib():
 
 
     def get_key_from_keyring(self):
+        """getting key from Keyring"""
         private_key = keyring.get_password("keepasshttplib", "private_key")
             
         if private_key != None:
@@ -40,23 +39,30 @@ class Keepasshttplib():
             return None
 
     def get_id_from_keyring(self):
+        """getting identification from keyring"""
         return keyring.get_password("keepasshttplib", "id")
 
     def test_associate(self, key, id):
+        """testing if associated"""
         enc = encrypter.Encrypter(key)
         (base64_private_key, nonce, verifier) = enc.get_verifier()
         return httpclient.test_associate(nonce, verifier, id)
 
     def associate(self, key):
+        """if associate"""
         enc = encrypter.Encrypter(key)
         (base64_private_key, nonce, verifier) = enc.get_verifier()
         return httpclient.associate(base64_private_key, nonce, verifier)
 
     def get_credentials_from_client(self, key, url, id):
+        """getting creditentials from client"""
         enc = encrypter.Encrypter(key)
         (base64_private_key, nonce, verifier) = enc.get_verifier()
         encrypted_url = enc.encrypt(url, base64.b64decode(nonce))
         (logins, nonce) = httpclient.get_logins(id, nonce, verifier, encrypted_url)
+        number_of_logins = len(logins)
+        if number_of_logins == 0:
+            return None
         encrypted_username = logins[0]['Login']
         encrypted_password = logins[0]['Password']
 

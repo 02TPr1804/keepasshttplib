@@ -11,6 +11,7 @@ class Encrypter():
         self.encoder = PKCS7Encoder()
 
     def get_verifier(self, iv=None):
+        """getting the verifier"""
         if iv == None:
             iv = get_random_bytes(16)
         aes = AES.new(self.key, AES.MODE_CBC, iv)
@@ -22,6 +23,7 @@ class Encrypter():
         return (base64_private_key, base64_iv, verifier)
 
     def encrypt(self, plain, iv=None):
+        """encryption"""
         if iv == None:
             iv = get_random_bytes(16)
         aes = AES.new(self.key, AES.MODE_CBC, iv)
@@ -29,6 +31,7 @@ class Encrypter():
         return base64.b64encode(aes.encrypt(padded_plain.encode())).decode()
 
     def decrypt(self, encrypted, iv=None):
+        """decryption"""
         if iv == None:
             iv = get_random_bytes(16)
         aes = AES.new(self.key, AES.MODE_CBC, iv)
@@ -36,5 +39,6 @@ class Encrypter():
         return self.encoder.decode(decrypted.decode())
 
 def generate_key():
+    """key generation"""
     return get_random_bytes(32)
 
