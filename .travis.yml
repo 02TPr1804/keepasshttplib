@@ -1,11 +1,9 @@
 language: python
 python: 
-  - 2.7
-  - 3.6
   - pypy3
 install:
   - pip install -r requirements.txt
-script: pytest
+script: ls
 deploy:
   provider: pypi
   user: 02TPr1804
