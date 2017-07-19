@@ -1,13 +1,14 @@
 language: python
-python: 
-  - "3.3"
+python:
+- '3.3'
 install:
-  - pip install -r requirements.txt
+- pip install -r requirements.txt
 script: ls
 deploy:
   provider: pypi
   user: 02TPr1804
+  distributions: sdist
   password:
-    secure: BnsLE7zisPcQ+RJEBE/k7UmOFti+MvYJ8sXMSOkP+jAvV0PH4I89VAT2Vmq9IRWA4EHSIjITzhdLq+Rd4b2U/HXutC0sCFno5LWSZrwDD1/usMWz5sRDxfLg5S3lpk7u5p1izb0yBwpL91+CXEKSgl97LNcP30wmpDEqkrcYpT3Ku5QqQnm/wnjZVdwbmqXOYgCxORoBg6QvPGB93kunGCnGoziKTELRMKxKzJGVYyTCBDl+iOTujhPgFMfNahHclhK+Yz23QPeEcN/6mcaOxqrAgWAg5rC6U6SUSi1Ld7sVyXDKsGU/acPmyEzNmHChPxAph8OoMJI5ZtGoSy86MTBkpvb1NJwE7wLBokIEdXzUQ578+tzy/HvCs1X3wTQk90jaCcSFu8TAWeViUX0iYocHI4D9I+Qz+khM2JW59XwUVEX39IiFxuqqwHEW+2O0UCi32j52WdUMQFG03U0xZcKhXW99Vv62IuGkjg5faZCJxlpOLNpyIwBmdv+5hqTuaz1XWuhnXQB2JPwgBjGIa72Hvb2Z5BZUj5V6C2mOXmeMTqvYiUmjRXvHsgBRIAM68L35dTTb4c2GE9tUcsKzu5jOhwX26wWe7luYv0fjbX9gCt7pthP5NOYbtBbxjbPCAHyzwfHCMhQE5f5KfpAcVk9/1WBMB8dLg3v+VMVWGnc=
+    secure: MrNbvTjwta3vRzrhLWymOE0Y9W3M7IgKfl1R4emVEDVYzIBMljDPBd0yaAVb/A+FvA11LZsTI2CuXSlH6C+hB5VV/nnXIlZ9UG7GWQgXb8YP/VlVcIW+SRsxNmaw4mJeg+wXdCIC80B2aoGSfHic/WrqegK8ZJQPJoLT8ZccfKImJ1VCPNzZhEIauqa2PDPjHc+lWi+rPGlnWs2CZ0LWssDq7kFKWHmi6MEOwcTL3O3XjwN5Zf8husOUTTM3B8b6+gzIqd2sX5JI1UEp/cexr+obtLdzE/Y6go6OYI7Q1mDRw2OExyxROliJZKuMarsxEWL3avrNx/CyPOvTHqwPM2pT0PPNcSq6VQPptGh9+ejbxk7hokR0uHMA4hxU2jHKozXB44maPRzZxiE7lMe4RbMXvxbMIpR56fMfrp5mbDxUene4RBYSFBNcgMrIuy4YoT4d04HLtD9UE1FyXYhRxJ07sMHp7k63BcYl+u3BBuIKYAYhxGL2P7NCWJxsNoQS49bqzZ58+qb9izopGD5+LSkLaA3ZTh/eSGk1upm6/LwNgiBotGHqHZHy87wclrafCbqLD2fKHMyY9IP/+N/IV0mMBIkgwQLkQ/8Rp/fh1tgDfcD8EwlwKsctkTNIOTOxpC3xF0eSUUWZuKNr0HF3KJ/XmbOZYc6MB241cJxYXB4=
   on:
     tags: true
