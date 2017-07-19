@@ -33,4 +33,8 @@ class Encrypter():
             iv = get_random_bytes(16)
         aes = AES.new(self.key, AES.MODE_CBC, iv)
         decrypted = aes.decrypt(base64.b64decode(encrypted))
-        return self.encoder.decode(decrypted).encode()
+        return self.encoder.decode(decrypted.decode())
+
+def generate_key():
+    return get_random_bytes(32)
+

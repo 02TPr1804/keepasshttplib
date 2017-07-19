@@ -37,10 +37,8 @@ def get_logins(id, nonce, verifier, url):
         'Nonce':nonce,
         'Verifier':verifier,
         'Url':url,
-        'SubmitUrl':''
+        'SubmitUrl':url
         }
-    print(payload)
     r = requests.post(URL, data=json.dumps(payload))
-    print(r.json())
-    return r.json()['Entries']
+    return (r.json()['Entries'], r.json()['Nonce'])
 
